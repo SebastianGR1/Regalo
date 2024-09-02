@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Un Regalo Especial para Ti</title>
+    <link rel="stylesheet" href="../Regalo/CSS/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sección de bienvenida -->
+        <div class="welcome-message" id="welcome-message">
+            <h1>¡Hola Allison Nicole!</h1>
+            <p>Quiero veas esta página para mostrarte cuánto te aprecio y lo importante que eres para mí. ¡Espero que te guste!</p>
+            <button id="show-more">Ver más</button>
+        </div>
+
+        <!-- Sección de contenido oculto que se muestra al hacer clic en "Ver más" -->
+        <div class="hidden-content" id="additional-content">
+            <h2>Recuerdos Especiales</h2>
+            <p>Aquí hay algunos momentos que hemos compartido juntos:</p>
+
+            <!-- Galería de Imágenes -->
+            <div class="gallery">
+                <img src="../Regalo/img/1.jpg" alt="Recuerdo 1">
+                <img src="../Regalo/img/2.jpg" alt="Recuerdo 2">
+                <img src="../Regalo/img/3.jpg" alt="Recuerdo 3">
+                <img src="../Regalo/img/4.jpg" alt="Recuerdo 4">
+                <img src="../Regalo/img/5 (1).png" alt="Recuerdo 5">
+                <img src="../Regalo/img/6.png" alt="Recuerdo 6">
+                <img src="../Regalo/img/7.png" alt="Recuerdo 7">
+            </div>
+
+            <!-- Contenedor del overlay -->
+<div class="overlay" id="overlay">
+    <img src="" alt="Ampliar imagen" id="overlay-image">
+</div>
+
+
+            <!-- Mensaje de Video -->
+            <h3>Un Mensaje para Ti</h3>
+            <!-- Área de Texto para Mensaje Personal -->
+            <div class="message-text">
+                <p>Allison, eres una persona muy importante para mí. Si no me crees, piensa en todo lo que he hecho por ti y en lo que estoy haciendo en este preciso momento. Nicole, eres alguien que aprecio muchísimo porque me has hecho muy feliz y me has enseñado mucho sobre gustos musicales y otras cosas. Incluso tenemos casi los mismos temas de conversación y debate, porque eres una auténtica amiga, Allison, y una muy buena. Quien diga lo contrario es un bastardo que merece que le metamos un palo por el culo. Pero sobre todo, siempre seguiré amándote, y eso lo sabes muy bien, Allison. Nunca se me pasó por la mente abandonarte; al contrario, solo he pensado en qué hacerte y cómo hacerte feliz.</p>
+                <p>ATT: Juan</p>
+            </div>
+            <video controls>
+                <source src="../Regalo/video/System Of A Down - She's Like Heroin [Subs. Español].mp4" type="video/mp4">
+                Tu navegador no soporta el video.
+            </video>
+
+          <!-- Botón para mostrar la sección especial -->
+          <button id="special-trigger">Parte Especial</button>
+        </div>
+
+        <!-- Sección para la pregunta especial -->
+        <div class="special-content hidden" id="special-content">
+            <div class="special-question">
+                <h2 id="question">¿Me quieres?</h2>
+                <div class="button-container">
+                    <button class="response-button" id="yes-button">Sí</button>
+                    <button class="response-button" id="no-button">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('show-more').addEventListener('click', function() {
+            const welcomeMessage = document.getElementById('welcome-message');
+            const additionalContent = document.getElementById('additional-content');
+            
+            if (additionalContent.classList.contains('show')) {
+                welcomeMessage.classList.remove('hide');
+                additionalContent.classList.remove('show');
+                this.textContent = 'Ver más';
+            } else {
+                welcomeMessage.classList.add('hide');
+                additionalContent.classList.add('show');
+                this.textContent = 'Ver menos';
+            }
+        });
+    
+        document.getElementById('special-trigger').addEventListener('click', function() {
+            const welcomeMessage = document.getElementById('welcome-message');
+            const additionalContent = document.getElementById('additional-content');
+            const specialContent = document.getElementById('special-content');
+            
+            // Ocultar el contenido principal y adicional
+            welcomeMessage.style.display = 'none';
+            additionalContent.style.display = 'none';
+            
+            // Mostrar la sección especial
+            specialContent.classList.remove('hidden');
+        });
+    
+        const yesButton = document.getElementById('yes-button');
+        const noButton = document.getElementById('no-button');
+        const questionElement = document.getElementById('question');
+    
+        yesButton.addEventListener('click', function() {
+            const currentText = questionElement.textContent;
+    
+            if (currentText === "¿Me quieres?") {
+                questionElement.textContent = "¡Y yo también te quiero!";
+                noButton.style.display = 'none'; // Oculta el botón No
+                yesButton.style.display = 'none'; // Oculta el botón Sí
+            } else if (currentText === "¿Segura?") {
+                questionElement.textContent = "Que mal :(";
+                noButton.style.display = 'none'; // Oculta el botón No
+                yesButton.style.display = 'none'; // Oculta el botón Sí
+            } else if (currentText === "Osea que si me quieres?") {
+                questionElement.textContent = "¡Y yo también te quiero!";
+                noButton.style.display = 'none'; // Oculta el botón No
+                yesButton.style.display = 'none'; // Oculta el botón Sí
+            }
+        });
+    
+        noButton.addEventListener('click', function() {
+            const currentText = questionElement.textContent;
+    
+            if (currentText === "¿Me quieres?") {
+                questionElement.textContent = "¿Segura?";
+            } else if (currentText === "¿Segura?") {
+                questionElement.textContent = "Osea que si me quieres?";
+                // Cambiar los botones de posición
+                noButton.style.order = '1'; // Coloca el botón No a la derecha
+                yesButton.style.order = '0'; // Coloca el botón Sí a la izquierda
+            } else if (currentText === "Osea que si me quieres?") {
+                questionElement.textContent = "Que mal :(";
+                noButton.style.display = 'none'; // Oculta el botón No
+                yesButton.style.display = 'none'; // Oculta el botón Sí
+            } else if (currentText === "Que mal :(") {
+                // No hacer nada adicional
+            }
+        });
+
+// Obtener todos los elementos de imagen en la galería
+const galleryImages = document.querySelectorAll('.gallery img');
+const overlay = document.getElementById('overlay');
+const overlayImage = document.getElementById('overlay-image');
+
+// Añadir un evento click a cada imagen de la galería
+galleryImages.forEach(img => {
+    img.addEventListener('click', function() {
+        overlay.style.display = 'flex'; // Mostrar el overlay
+        overlayImage.src = this.src; // Establecer la fuente de la imagen en el overlay
+    });
+});
+
+// Añadir un evento click al overlay para ocultarlo
+overlay.addEventListener('click', function() {
+    overlay.style.display = 'none'; // Ocultar el overlay
+});
+
+
+    </script>
+    
+
+
+</body>
+</html>
