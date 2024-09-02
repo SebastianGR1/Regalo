@@ -184,13 +184,26 @@ button:hover, .response-button:hover {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
-    margin-top: 20px; /* Espacio arriba del botón */
+    position: fixed; /* Fija el botón en la pantalla */
+    bottom: 20px; /* Espacio desde el borde inferior de la pantalla */
+    left: 50%; /* Centrará el botón horizontalmente */
+    transform: translateX(-50%); /* Ajusta el botón para que esté centrado */
+    z-index: 2000; /* Asegura que esté encima de otros elementos */
     transition: background-color 0.3s ease;
-    /* Asegurarse de que esté centrado */
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    /* Asegurarse de que esté visible en todos los dispositivos */
+    width: calc(100% - 40px); /* Ajusta el ancho para que no se desborde en pantallas pequeñas */
+    max-width: 300px; /* Ancho máximo para mantener un tamaño adecuado */
 }
+
+/* Ajustar el botón en dispositivos móviles */
+@media (max-width: 600px) {
+    #special-trigger {
+        width: calc(100% - 20px); /* Ancho del botón casi al 100% del ancho de la pantalla con margen */
+        bottom: 10px; /* Reducir el espacio desde el borde inferior en pantallas pequeñas */
+        font-size: 14px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+    }
+}
+
 
 /* Estilo para la pregunta especial */
 .special-content {
